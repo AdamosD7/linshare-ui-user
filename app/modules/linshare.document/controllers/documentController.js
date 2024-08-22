@@ -421,10 +421,12 @@
      * @memberOf LinShare.document.documentController
      */
     function downloadSelectedFiles(selectedDocuments) {
-      _.forEach(selectedDocuments, function(document) {
-        $scope.downloadFile(document);
-      });
-    }
+  selectedDocuments.forEach((document, index) => {
+    setTimeout(() => {
+      $scope.downloadFile(document);
+    }, index * 1000); // 1000 ms = 1 sekunda
+  });
+}
 
     function getDetails(item, list, index) {
       index = index || 0;
